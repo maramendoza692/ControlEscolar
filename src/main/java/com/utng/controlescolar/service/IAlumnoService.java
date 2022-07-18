@@ -11,7 +11,7 @@ public interface IAlumnoService {
 	
 	Response<Alumno> buscarAlumno(AlumnoFiltroRequest filtro);
 	
-	Response<Alumno> guardarAlumno(Alumno alumno);
+	Response<Alumno> guardarAlumno(AlumnoRequest alumno);
 	
 	Response<Integer> elimianarAlumno(Integer idAlumno);
 	

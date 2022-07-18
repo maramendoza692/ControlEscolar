@@ -23,9 +23,9 @@ public class AlumnoRequest {
 
 	private String correo;
 	
-	private Integer grupoClave;
+	//private Integer grupoClave;
 	
-	private Integer fk_estatus;
+	private Integer fk_status;
 
 	private Integer fk_grupo;
 	

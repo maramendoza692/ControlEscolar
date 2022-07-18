@@ -15,9 +15,8 @@ public class AlumnoFiltroRequest {
 	
 	private String txt_correo;
 	
-	//private String grupoClave;
+	private String txt_desc_grupo;
 	
-	private Integer fk_grupo;
-	
+	private Grupo fk_grupo;
 	
 }

@@ -59,13 +59,9 @@ public class ConsultaAlumnoRepository implements IConsultaAlumnoRepository{
 			predicados.toArray(pr);
 			cq.where(pr);
 		}
-		if (filtro.getFk_grupo() != null && filtro.getFk_grupo() != 0) {
+		if (filtro.getTxt_desc_grupo() != null && !filtro.getTxt_desc_grupo().isEmpty()) {
 			
-			
-			predicados.add(
-					cb.equal(
-							root.get("fk_grupo"), 
-						filtro.getFk_grupo()));
+			predicados.add(cb.equal(root.get("txt_desc_grupo"), filtro.getTxt_desc_grupo()));
 	}
 		if (!predicados.isEmpty()) {
 			Predicate[] pr= new Predicate[predicados.size()];
