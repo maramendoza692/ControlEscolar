@@ -27,6 +27,8 @@ public class AlumnoRequest {
 	
 	private Integer fk_status;
 
-	private Integer fk_grupo;
+	//private Grupo pk_grupo;
+	
+	private String txt_desc_grupo;
 	
 }

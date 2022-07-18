@@ -61,7 +61,7 @@ public class Alumno implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "FK_GRUPO")
-	private Grupo fk_grupo;
+	private Grupo pk_grupo;
 	
 }
 

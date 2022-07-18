@@ -57,7 +57,7 @@ public class AlumnoService  implements IAlumnoService{
 		
 		if (optional.isPresent()) {
 			grupo = optional.get();
-			alumno.setFk_grupo(grupo);
+			alumno.setPk_grupo(grupo);
 		}
 		
 		Response<Alumno> response = new Response<Alumno>();
@@ -81,7 +81,7 @@ public class AlumnoService  implements IAlumnoService{
 	public Response<Alumno> guardarAlumno(AlumnoRequest alumno) {
 		Response<Alumno> response = new Response<Alumno>();
 		
-		Optional <Grupo> optionalGrupo = grupoRepository.findById(alumno.getFk_grupo());
+		Optional <Grupo> optionalGrupo = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
 		Grupo grupo = null;
 		Alumno alumno1 = null;
 		Alumno alumno2 = null;
@@ -90,7 +90,7 @@ public class AlumnoService  implements IAlumnoService{
 			grupo = optionalGrupo.get();
 			alumno1 = new Alumno();
 			alumno1.setTxt_expediente(alumno.getTxt_expediente());
-			alumno1.setFk_grupo(grupo);
+			alumno1.setPk_grupo(grupo);
 			alumno1.setTxt_nombre(alumno.getTxt_nombre());
 			alumno1.setTxt_ape_paterno(alumno.getTxt_ape_paterno());
 			alumno1.setTxt_ape_materno(alumno.getTxt_ape_materno());
@@ -107,7 +107,7 @@ public class AlumnoService  implements IAlumnoService{
 			response.setData(alumno2);
 		}else {
 			response.setStatus("ERROR");
-			response.setMessage("El ciclo no existe");
+			response.setMessage("El grupo no existe");
 			response.setData(null);
 		}
 		
@@ -116,25 +116,52 @@ public class AlumnoService  implements IAlumnoService{
 
 
 	@Override
-	public Response<Integer> elimianarAlumno(Integer idAlumno) {
+	public Response<Integer> elimianarAlumno(Integer pk_alumno) {
 		Response<Integer> response = new Response<Integer>();
-		alumnoRepository.deleteById(idAlumno);
+		alumnoRepository.deleteById(pk_alumno);
 		
 		response.setMessage("Eliminado correctamente");
 		response.setStatus("OK");
-		response.setData(idAlumno);
+		response.setData(pk_alumno);
 		
 		return response;
 	}
 
 
 	@Override
-	public Response<Alumno> actualizarAlumno(Alumno alumno) {
-		Response<Alumno> response = new Response<Alumno>();
+	public Response<Alumno> actualizarAlumno(AlumnoRequest alumno) {
+Response<Alumno> response = new Response<Alumno>();
 		
-		 Alumno alumnoAct = alumnoRepository.save(alumno);
-		 response.setMessage("Guardado correctamente");
-			response.setData(alumno);
+		Optional <Grupo> optionalGrupo = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
+		Grupo grupo = null;
+		Alumno alumno1 = null;
+		Alumno alumno2 = null;
+		
+		if (optionalGrupo.isPresent()) {
+			grupo = optionalGrupo.get();
+			alumno1 = new Alumno();
+			alumno1.setTxt_expediente(alumno.getTxt_expediente());
+			alumno1.setPk_alumno(alumno.getPk_alumno());
+			alumno1.setPk_grupo(grupo);
+			alumno1.setTxt_nombre(alumno.getTxt_nombre());
+			alumno1.setTxt_ape_paterno(alumno.getTxt_ape_paterno());
+			alumno1.setTxt_ape_materno(alumno.getTxt_ape_materno());
+			alumno1.setTxt_sexo(alumno.getTxt_sexo());
+			alumno1.setFk_status(alumno.getFk_status());
+			alumno1.setTxt_correo(alumno.getCorreo());
+			alumno1.setTxt_curp(alumno.getTxt_curp());
+			
+			
+			alumno2 = alumnoRepository.save(alumno1);//Meter en el objeto materia2, ya con el Id pq va alrepository y guarda materia1, 
+			
+			response.setStatus("OK");
+			response.setMessage("Guardado correctamente");
+			response.setData(alumno2);
+		}else {
+			response.setStatus("ERROR");
+			response.setMessage("El grupo no existe");
+			response.setData(null);
+		}
 		
 		return response;
 	}

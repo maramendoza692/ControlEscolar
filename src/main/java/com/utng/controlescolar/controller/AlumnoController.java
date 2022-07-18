@@ -52,23 +52,23 @@ public class AlumnoController {
 	@PostMapping(path = "/guardarAlumno",
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response <Alumno>> guardarAlumno (@RequestBody Alumno alumno){
+	public ResponseEntity<Response <Alumno>> guardarAlumno (@RequestBody AlumnoRequest alumno){
 	
 		Response<Alumno> response = alumnoService.guardarAlumno(alumno);
 		return new ResponseEntity<Response<Alumno>> (response, HttpStatus.OK);
 	}
 	
-	@DeleteMapping(path = "/borrarAlumnoPorId/{idAlumno}",
+	@DeleteMapping(path = "/borrarAlumnoPorId/{pk_alumno}",
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response<Integer>> borrarAlumnoPorId (@PathVariable("idAlumno") Integer idAlumno){
-		Response<Integer> id = alumnoService.elimianarAlumno(idAlumno);
-		return new ResponseEntity<Response <Integer>>(id, HttpStatus.OK);
+	public ResponseEntity<Response<Integer>> borrarAlumnoPorId (@PathVariable("pk_alumno") Integer idAlumno){
+		Response<Integer> pk = alumnoService.elimianarAlumno(idAlumno);
+		return new ResponseEntity<Response <Integer>>(pk, HttpStatus.OK);
 	}
 	
 	@PutMapping(path = "/actualizarAlumno",
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response <Alumno>> actualizarAlumno (@RequestBody Alumno alumno){
+	public ResponseEntity<Response <Alumno>> actualizarAlumno (@RequestBody AlumnoRequest alumno){
 	
 		Response<Alumno> materiaModificada = alumnoService.actualizarAlumno(alumno);
 		return new ResponseEntity<Response<Alumno>> (materiaModificada, HttpStatus.OK);

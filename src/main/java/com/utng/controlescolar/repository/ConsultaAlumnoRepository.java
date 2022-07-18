@@ -53,22 +53,16 @@ public class ConsultaAlumnoRepository implements IConsultaAlumnoRepository{
 			predicados.add(cb.like(root.get("txt_curp"), "%" + filtro.getTxt_curp() + "%"));
 		}
 		
-	
-		if(!predicados.isEmpty()) {
-			Predicate[] pr = new Predicate[predicados.size()];
-			predicados.toArray(pr);
-			cq.where(pr);
-		}
-		if (filtro.getTxt_desc_grupo() != null && !filtro.getTxt_desc_grupo().isEmpty()) {
+		if (filtro.getPk_grupo() != null ) {
 			
-			predicados.add(cb.equal(root.get("txt_desc_grupo"), filtro.getTxt_desc_grupo()));
-	}
+			predicados.add(cb.equal(root.get("pk_grupo"), filtro.getPk_grupo()));
+		}
 		if (!predicados.isEmpty()) {
 			Predicate[] pr= new Predicate[predicados.size()];
 			predicados.toArray(pr);
 			cq.where(pr);
 		}
-		cq.orderBy(cb.desc(root.get("pk_alumno")));
+		cq.orderBy(cb.asc(root.get("pk_alumno")));
 		
 		CriteriaQuery<Alumno> select= cq.select(root);
 		
