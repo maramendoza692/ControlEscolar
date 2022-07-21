@@ -76,12 +76,23 @@ public class AlumnoController {
 				return new ResponseEntity<Response<Alumno>>(response,HttpStatus.OK);
 	}
 	
-	@GetMapping(path = "/buscarAlumnoPorID/{pk_alumno}", //esto hacee referencia a que solo uno
+	@GetMapping(path = "/consultarAlumnoPorID/{pk_alumno}", //esto hacee referencia a que solo uno
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response<Object[]>> consultarAlumnoPorID (@PathVariable("pk_alumno") Integer pk_alumno){ // pathVariable = solo se mandara una variable el cual sera el id de solo un objeto
+	public ResponseEntity<Response<Alumno>> consultarAlumnoPorID (@PathVariable("pk_alumno") Integer pk_alumno){ // pathVariable = solo se mandara una variable el cual sera el id de solo un objeto
 		
 		
-		Response<Object[]> response = alumnoService.buscarAlumnoId(pk_alumno);
+		Response<Alumno> response = alumnoService.buscarAlumnoId(pk_alumno);
+		
+		return new ResponseEntity<Response<Alumno>> (response,HttpStatus.OK);
+		
+	}
+	
+	@GetMapping(path = "/consultarMateriasAlumno/{pk_alumno}", //esto hacee referencia a que solo uno
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<Object[]>> mostrarMateriasAlumnoId (@PathVariable("pk_alumno") Integer pk_alumno){ // pathVariable = solo se mandara una variable el cual sera el id de solo un objeto
+		
+		
+		Response<Object[]> response = alumnoService.mostrarMateriasAlumnoId(pk_alumno);
 		
 		return new ResponseEntity<Response<Object[]>> (response,HttpStatus.OK);
 		

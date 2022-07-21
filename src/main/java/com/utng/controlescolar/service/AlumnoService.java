@@ -165,12 +165,38 @@ Response<Alumno> response = new Response<Alumno>();
 		
 		return response;
 	}
+	
+	@Override
+	public Response<Alumno> buscarAlumnoId(Integer pk_alumno) {
+		Response<Alumno> response = new Response<Alumno>();
+
+		Alumno alumno = null;
+
+		Optional<Alumno> optional = alumnoRepository.findById(pk_alumno); // optional es una capsula para saber si regreso o
+																		// no un registro
+		if (optional.isPresent()) {
+
+			alumno = optional.get();
+			alumno = optional.get();
+			response.setStatus("OK");
+			response.setMessage("Busqueda correcta");
+			response.setData(alumno);
+
+		} else {
+
+			response.setMessage("Sin resultados");
+			response.setData(null);
+
+		}
+
+		return response;
+	}
 
 	@Override
-	public Response<Object[]> buscarAlumnoId(Integer pk_alumno) {
+	public Response<Object[]> mostrarMateriasAlumnoId(Integer pk_alumno) {
 		Response<Object[]> response = new Response<Object[]>();
 
-		List<Object[]> lista = alumnoRepository.mostrarDetallesAlumnoID(pk_alumno);
+		List<Object[]> lista = alumnoRepository.mostrarMateriasAlumnoID(pk_alumno);
 		
 		if(lista.isEmpty()) {
 			response.setMessage("No hay resultados");
