@@ -1,7 +1,6 @@
 package com.utng.controlescolar.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +19,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "CAT_TBL_CICLO_PROMEDIO")
-public class Promedio implements Serializable {
+public class Calificaciones implements Serializable {
 
 	/**
 	 * 

@@ -21,7 +21,7 @@ public class AlumnoRequest {
 
 	private String txt_sexo;
 
-	private String correo;
+	private String txt_correo;
 	
 	//private Integer grupoClave;
 	

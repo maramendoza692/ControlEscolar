@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.utng.controlescolar.model.Alumno;
 import com.utng.controlescolar.model.AlumnoFiltroRequest;
 import com.utng.controlescolar.model.AlumnoRequest;
-
+import com.utng.controlescolar.model.MateriasAluRequest;
 import com.utng.controlescolar.model.Response;
 import com.utng.controlescolar.service.IAlumnoService;
 
@@ -38,14 +38,14 @@ public class AlumnoController {
 		
 	}
 	
-	@GetMapping(path = "/buscarAlumnoPorID/{idAlumno}", //esto hacee referencia a que solo uno
+	@GetMapping(path = "/buscarAlumnoPorID/{pk_alumno}", //esto hacee referencia a que solo uno
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response<Alumno>> consultarAlumnoPorID (@PathVariable("idAlumno") Integer idAlumno){ // pathVariable = solo se mandara una variable el cual sera el id de solo un objeto
+	public ResponseEntity<Response<Object[]>> consultarAlumnoPorID (@PathVariable("pk_alumno") Integer pk_alumno){ // pathVariable = solo se mandara una variable el cual sera el id de solo un objeto
 		
 		
-		Response<Alumno> response = alumnoService.buscarAlumnoId(idAlumno);
+		Response<Object[]> response = alumnoService.buscarAlumnoId(pk_alumno);
 		
-		return new ResponseEntity<Response<Alumno>> (response,HttpStatus.OK);
+		return new ResponseEntity<Response<Object[]>> (response,HttpStatus.OK);
 		
 	}
 	
@@ -83,6 +83,15 @@ public class AlumnoController {
 				Response<Alumno> response = alumnoService.buscarAlumno(filtro);
 				
 				return new ResponseEntity<Response<Alumno>>(response,HttpStatus.OK);
+	}
+	
+	@GetMapping(path = "/detallesAlumno", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<Object[]>> detallesAlumno(){
+		
+		Response<Object[]> lista = alumnoService.detallesAlumno();
+		
+		return new ResponseEntity<Response<Object[]>> (lista, HttpStatus.OK);
+		
 	}
 
 }

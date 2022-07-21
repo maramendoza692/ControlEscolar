@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,15 +26,6 @@ public class Ciclo implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -1583460689462715838L;
-
-	/*ID_CICLO int(11) NOT NULL AUTO_INCREMENT,
-  CLAVE varchar(12) DEFAULT NULL,
-  NOMBRE varchar(30) DEFAULT NULL,
-  ESTATUS int(11) DEFAULT NULL,
-  PERIODO int(11) DEFAULT NULL,
-  FECHA_INICIO date DEFAULT NULL,
-  FECHA_FIN date DEFAULT NULL,
-  PRIMARY KEY (ID_CICLO)*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "PK_CICLO")

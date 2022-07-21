@@ -3,6 +3,9 @@ package com.utng.controlescolar.service;
 import com.utng.controlescolar.model.Alumno;
 import com.utng.controlescolar.model.AlumnoFiltroRequest;
 import com.utng.controlescolar.model.AlumnoRequest;
+import com.utng.controlescolar.model.Materia;
+import com.utng.controlescolar.model.MateriasAluRequest;
+import com.utng.controlescolar.model.Profesor;
 import com.utng.controlescolar.model.Response;
 
 public interface IAlumnoService {
@@ -17,7 +20,9 @@ public interface IAlumnoService {
 	
 	Response<Alumno> actualizarAlumno(AlumnoRequest alumno);
 
-	Response<Alumno> buscarAlumnoId(Integer idAlumno);
+	Response<Object[]> buscarAlumnoId(Integer pk_alumno);
+
+	Response<Object[]> detallesAlumno();
 
 	
 

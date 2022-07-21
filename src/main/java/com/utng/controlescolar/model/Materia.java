@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -34,7 +33,7 @@ public class Materia implements Serializable{
 	@Column(name= "TXT_CLAVE")
 	private String txt_clave;
 	
-	@Column(name= "DESC_MATERIA")
+	@Column(name= "DES_MATERIA")
 	private String des_materia;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -47,7 +46,7 @@ public class Materia implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "FK_PROMEDIO")
-	private Promedio fk_promedio;
+	private Calificaciones fk_promedio;
 	
 	
 }

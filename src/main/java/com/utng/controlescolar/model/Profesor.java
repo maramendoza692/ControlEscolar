@@ -4,13 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -22,9 +18,6 @@ import lombok.Setter;
 @Table(name = "MASTER_TBL_PROFESOR")
 public class Profesor implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7758222377978623282L;
 	
 	@Id
@@ -47,8 +40,4 @@ public class Profesor implements Serializable {
 	@Column(name= "TXT_CORREO")
 	private String txt_correo;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name= "FK_GR_MT")
-	private GrupoMateria fk_gr_mt;
-
 }
