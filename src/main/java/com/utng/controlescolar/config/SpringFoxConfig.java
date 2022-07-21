@@ -5,9 +5,11 @@ package com.utng.controlescolar.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import io.swagger.models.HttpMethod;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -42,6 +44,8 @@ public class SpringFoxConfig implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/**");
+        
     }
 
     @Bean
@@ -63,5 +67,5 @@ public class SpringFoxConfig implements WebMvcConfigurer {
                 .version("1.0.0")
                 .build();
     }    
-    
+
 }

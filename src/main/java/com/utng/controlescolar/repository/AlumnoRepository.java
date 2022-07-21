@@ -1,19 +1,15 @@
 package com.utng.controlescolar.repository;
 
 import java.util.List;
-//import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-//import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.query.Param;
+
 import com.utng.controlescolar.model.Alumno;
-import com.utng.controlescolar.model.Materia;
-import com.utng.controlescolar.model.MateriasAluRequest;
-import com.utng.controlescolar.model.Profesor;
 
 
 public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
-	
 	@Query(value = "SELECT mtm.TXT_CLAVE, mtm.DES_MATERIA, mtp.TXT_NOMBRE, mtp.TXT_APE_PATERNO, mtp.TXT_APE_MATERNO, ctp.NUM_CAL_1, ctp.NUM_CAL_2, ctp.NUM_CAL_3 \n"
 			+ "FROM MASTER_TBL_ALUMNO AS mta \n"
 			+ "INNER JOIN REL_TBL_ALUMNO_MATERIA AS rtam \n"
@@ -45,6 +41,5 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 				+ "INNER JOIN REL_TBL_PROFESOR_ALUMNO AS rtpa \n"
 				+ "ON mtp.PK_PROFESOR = rtpa.FK_PROFESOR AND mta.PK_ALUMNO = rtpa.FK_ALUMNO WHERE mta.PK_ALUMNO = ?1" , nativeQuery = true) 
 			List<Object[]>mostrarDetallesAlumnoID(Integer pk_alumno);
-	
 	
 }

@@ -9,12 +9,11 @@ import org.springframework.stereotype.Service;
 import com.utng.controlescolar.model.Alumno;
 import com.utng.controlescolar.model.AlumnoFiltroRequest;
 import com.utng.controlescolar.model.AlumnoRequest;
+import com.utng.controlescolar.model.Ciclo;
 import com.utng.controlescolar.model.Grupo;
-import com.utng.controlescolar.model.Materia;
-import com.utng.controlescolar.model.MateriasAluRequest;
-import com.utng.controlescolar.model.Profesor;
 import com.utng.controlescolar.model.Response;
 import com.utng.controlescolar.repository.AlumnoRepository;
+import com.utng.controlescolar.repository.CicloRepository;
 import com.utng.controlescolar.repository.ConsultaAlumnoRepository;
 import com.utng.controlescolar.repository.GrupoRepository;
 
@@ -48,6 +47,36 @@ public class AlumnoService  implements IAlumnoService{
 		
 		return response;
 	}
+
+	
+	@Override
+	public Response<Alumno> buscarAlumno(AlumnoFiltroRequest alumno) {
+		
+		Optional<Grupo> optional = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
+		Grupo grupo = null;
+		
+		if (optional.isPresent()) {
+			grupo = optional.get();
+			alumno.setPk_grupo(grupo);
+		}
+		
+		Response<Alumno> response = new Response<Alumno>();
+		response = consultaAlumnoRepository.busquedaAlumno(alumno);
+		
+		return response;
+	}
+
+
+	/*@Override
+	public Response<Alumno> guardarAlumno(Alumno alumno) {
+		Response<Alumno> response = new Response<Alumno>();
+		
+		Alumno alumnoGuardar = alumnoRepository.save(alumno);
+		response.setMessage("Guardado correctamente");
+			response.setData(alumno);
+			
+		return response;
+	}*/
 	
 	public Response<Alumno> guardarAlumno(AlumnoRequest alumno) {
 		Response<Alumno> response = new Response<Alumno>();
@@ -101,7 +130,7 @@ public class AlumnoService  implements IAlumnoService{
 
 	@Override
 	public Response<Alumno> actualizarAlumno(AlumnoRequest alumno) {
-		Response<Alumno> response = new Response<Alumno>();
+Response<Alumno> response = new Response<Alumno>();
 		
 		Optional <Grupo> optionalGrupo = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
 		Grupo grupo = null;
@@ -127,29 +156,12 @@ public class AlumnoService  implements IAlumnoService{
 			
 			response.setStatus("OK");
 			response.setMessage("Guardado correctamente");
-			response.setData(alumno2); 
+			response.setData(alumno2);
 		}else {
 			response.setStatus("ERROR");
 			response.setMessage("El grupo no existe");
 			response.setData(null);
 		}
-		
-		return response;
-	}
-	
-	@Override
-	public Response<Alumno> buscarAlumno(AlumnoFiltroRequest alumno) {
-		
-		Optional<Grupo> optional = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
-		Grupo grupo = null;
-		
-		if (optional.isPresent()) {
-			grupo = optional.get();
-			alumno.setPk_grupo(grupo);
-		}
-		
-		Response<Alumno> response = new Response<Alumno>();
-		response = consultaAlumnoRepository.busquedaAlumno(alumno);
 		
 		return response;
 	}
@@ -193,7 +205,6 @@ public class AlumnoService  implements IAlumnoService{
 		
 		return response;
 	}
-	
 	
 
 }

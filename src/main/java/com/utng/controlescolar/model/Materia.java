@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,7 +34,7 @@ public class Materia implements Serializable{
 	@Column(name= "TXT_CLAVE")
 	private String txt_clave;
 	
-	@Column(name= "DES_MATERIA")
+	@Column(name= "DESC_MATERIA")
 	private String des_materia;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

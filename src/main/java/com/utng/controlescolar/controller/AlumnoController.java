@@ -1,6 +1,7 @@
 package com.utng.controlescolar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.utng.controlescolar.model.Alumno;
 import com.utng.controlescolar.model.AlumnoFiltroRequest;
 import com.utng.controlescolar.model.AlumnoRequest;
-import com.utng.controlescolar.model.MateriasAluRequest;
+
 import com.utng.controlescolar.model.Response;
 import com.utng.controlescolar.service.IAlumnoService;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/alumno")
+
 public class AlumnoController {
 
 	@Autowired
@@ -35,17 +37,6 @@ public class AlumnoController {
 		Response<Alumno> lista = alumnoService.consultarTodos();
 		
 		return new ResponseEntity<Response<Alumno>> (lista, HttpStatus.OK);
-		
-	}
-	
-	@GetMapping(path = "/buscarAlumnoPorID/{pk_alumno}", //esto hacee referencia a que solo uno
-			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response<Object[]>> consultarAlumnoPorID (@PathVariable("pk_alumno") Integer pk_alumno){ // pathVariable = solo se mandara una variable el cual sera el id de solo un objeto
-		
-		
-		Response<Object[]> response = alumnoService.buscarAlumnoId(pk_alumno);
-		
-		return new ResponseEntity<Response<Object[]>> (response,HttpStatus.OK);
 		
 	}
 	
@@ -83,6 +74,17 @@ public class AlumnoController {
 				Response<Alumno> response = alumnoService.buscarAlumno(filtro);
 				
 				return new ResponseEntity<Response<Alumno>>(response,HttpStatus.OK);
+	}
+	
+	@GetMapping(path = "/buscarAlumnoPorID/{pk_alumno}", //esto hacee referencia a que solo uno
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Response<Object[]>> consultarAlumnoPorID (@PathVariable("pk_alumno") Integer pk_alumno){ // pathVariable = solo se mandara una variable el cual sera el id de solo un objeto
+		
+		
+		Response<Object[]> response = alumnoService.buscarAlumnoId(pk_alumno);
+		
+		return new ResponseEntity<Response<Object[]>> (response,HttpStatus.OK);
+		
 	}
 	
 	@GetMapping(path = "/detallesAlumno", produces = MediaType.APPLICATION_JSON_VALUE)
