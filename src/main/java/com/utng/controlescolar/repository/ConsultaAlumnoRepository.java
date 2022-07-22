@@ -45,6 +45,10 @@ public class ConsultaAlumnoRepository implements IConsultaAlumnoRepository{
 			predicados.add(cb.like(root.get("txt_nombre"), "%" + filtro.getTxt_nombre() + "%"));
 		}
 		
+		if(filtro.getTxt_ape_paterno() != null && !filtro.getTxt_ape_paterno().isEmpty()) {
+			predicados.add(cb.like(root.get("txt_ape_paterno"), "%" + filtro.getTxt_ape_paterno() + "%"));
+		}
+		
 		if(filtro.getTxt_correo() != null && !filtro.getTxt_correo().isEmpty()) {
 			predicados.add(cb.like(root.get("txt_correo"), "%" + filtro.getTxt_correo() + "%"));
 		}
