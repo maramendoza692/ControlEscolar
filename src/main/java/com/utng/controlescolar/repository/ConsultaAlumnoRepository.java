@@ -48,6 +48,9 @@ public class ConsultaAlumnoRepository implements IConsultaAlumnoRepository{
 		if(filtro.getTxt_ape_paterno() != null && !filtro.getTxt_ape_paterno().isEmpty()) {
 			predicados.add(cb.like(root.get("txt_ape_paterno"), "%" + filtro.getTxt_ape_paterno() + "%"));
 		}
+		if(filtro.getTxt_ape_materno() != null && !filtro.getTxt_ape_materno().isEmpty()) {
+			predicados.add(cb.like(root.get("txt_ape_materno"), "%" + filtro.getTxt_ape_materno() + "%"));
+		}
 		
 		if(filtro.getTxt_correo() != null && !filtro.getTxt_correo().isEmpty()) {
 			predicados.add(cb.like(root.get("txt_correo"), "%" + filtro.getTxt_correo() + "%"));

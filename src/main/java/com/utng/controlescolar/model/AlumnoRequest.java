@@ -26,6 +26,8 @@ public class AlumnoRequest {
 	//private Integer grupoClave;
 	
 	private Integer fk_status;
+	
+	private String txt_status;
 
 	//private Grupo pk_grupo;
 	
