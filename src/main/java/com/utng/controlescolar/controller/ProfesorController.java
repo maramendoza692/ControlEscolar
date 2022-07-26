@@ -5,8 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,4 +46,19 @@ public class ProfesorController {
 		Response<ProfesorDTO> response=iProfesorService.consultarTodos();
 		return new ResponseEntity<Response<ProfesorDTO>>(response, HttpStatus.OK);
 	}
+	
+	@PutMapping("/actualizarProfesor")
+	public ResponseEntity <Response<ProfesorDTO>>actualizar(@RequestBody ProfesorRequest profesor){
+		Response<ProfesorDTO> actualizarProfesor =  iProfesorService.editar(profesor);
+		return new ResponseEntity<Response<ProfesorDTO>>(actualizarProfesor, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/eliminarProfesor/{id}")
+	public ResponseEntity <Response<Integer>> eliminarProfesor(@PathVariable Integer id){
+		Response<Integer> eliminarProfesor =  iProfesorService.eliminar(id);
+		return new ResponseEntity<Response<Integer>>(eliminarProfesor, HttpStatus.OK);
+		
+	}
+	
+	
 }

@@ -52,15 +52,32 @@ public class ProfesorService implements IProfesorService{
 	}
 
 	@Override
-	public Response<Profesor> editar(Profesor profesor) {
-		// TODO Auto-generated method stub
-		return null;
+	public Response<ProfesorDTO> editar(ProfesorRequest profesor) {
+		Response<ProfesorDTO> profesorActualiazado =  new Response<ProfesorDTO>();
+		Profesor profesor1 = new Profesor();
+		Profesor profesor2;
+		ProfesorDTO profesorDto;
+	
+		profesor1.setPk_profesor(profesor.getPk_profesor());
+		profesor1.setTxt_clave(profesor.getTxt_clave());
+		profesor1.setTxt_nombre(profesor.getTxt_nombre());
+		profesor1.setTxt_ape_materno(profesor.getTxt_ape_materno());
+		profesor1.setTxt_ape_paterno(profesor.getTxt_ape_paterno());
+		profesor1.setTxt_correo(profesor.getTxt_correo());
+		 	
+		
+		profesor2 = iProfesorRepository.save(profesor1);
+		profesorDto = new ProfesorDTO(profesor2);
+		profesorActualiazado.setData(profesorDto);
+		
+		return profesorActualiazado;
 	}
 
 	@Override
-	public Response<Profesor> eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Response<Integer> eliminar(Integer id) {
+		Response<Integer> eliminarProfesor = new Response<Integer>();
+		iProfesorRepository.deleteById(id);
+		return eliminarProfesor;
 	}
 
 	@Override
