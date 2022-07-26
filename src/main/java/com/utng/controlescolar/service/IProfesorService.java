@@ -6,9 +6,11 @@ import com.utng.controlescolar.model.ProfesorRequest;
 import com.utng.controlescolar.model.Response;
 
 public interface IProfesorService {
-	public Response<Profesor> agregar(ProfesorRequest profesor);
+	public Response<ProfesorDTO> agregar(ProfesorRequest profesor);
 	
 	public Response<Profesor> editar(Profesor profesor);
 	
 	public Response<Profesor> eliminar(Integer id);
+	
+	public Response<ProfesorDTO> consultarTodos();
 }

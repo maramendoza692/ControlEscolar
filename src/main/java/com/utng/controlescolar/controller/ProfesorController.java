@@ -5,12 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.utng.controlescolar.model.Profesor;
 import com.utng.controlescolar.model.ProfesorDTO;
 import com.utng.controlescolar.model.ProfesorRequest;
 import com.utng.controlescolar.model.Response;
@@ -24,12 +24,23 @@ public class ProfesorController {
 	@Autowired
 	private IProfesorService iProfesorService;
 	
+	/*
+	 * Metodo para agregar nuevos maestros
+	 */
 	@PostMapping(path = "/guardarProfesor",
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Response <Profesor>> guardarProfesor (@RequestBody ProfesorRequest profesor){
+	public ResponseEntity<Response <ProfesorDTO>> guardarProfesor (@RequestBody ProfesorRequest profesor){
 	
-		Response<Profesor> response =iProfesorService.agregar(profesor);
-		return new ResponseEntity<Response<Profesor>> (response, HttpStatus.OK);
+		Response<ProfesorDTO> response =iProfesorService.agregar(profesor);
+		return new ResponseEntity<Response<ProfesorDTO>> (response, HttpStatus.OK);
+	}
+	/*
+	 * Metodo para conultar todos los registroa que se encuentra en la base de datos
+	 */
+	@GetMapping("/consultar-todos")
+	public ResponseEntity<Response<ProfesorDTO>> consultarTodos(){
+		Response<ProfesorDTO> response=iProfesorService.consultarTodos();
+		return new ResponseEntity<Response<ProfesorDTO>>(response, HttpStatus.OK);
 	}
 }

@@ -19,5 +19,5 @@ private Integer pk_profesor;
 	
 	private String txt_correo;
 	
-	private Integer fk_gr_mt;
+	//private Integer fk_gr_mt;
 }
