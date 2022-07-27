@@ -36,30 +36,30 @@ public class ConsultaMateriaRepository implements IConsultaMateriaRepository {
 
 				List<Predicate> predicados = new ArrayList<Predicate>();
 
-				if (filtro.getTxt_clave() != null && !filtro.getTxt_clave().isEmpty()) {
+				if (filtro.getClave() != null && !filtro.getClave().isEmpty()) {
 
 					//Aqui se pueden optener las conidicones de =
 					
-					predicados.add(criteriaBuilder.like(root.get("clave"), "%"+filtro.getTxt_clave()+"%" ));
+					predicados.add(criteriaBuilder.like(root.get("clave"), "%"+filtro.getClave()+"%" ));
 					
 					
 				}
-				if (filtro.getDesc_materia() != null && !filtro.getDesc_materia().isEmpty()) {
+				if (filtro.getDescMateria() != null && !filtro.getDescMateria().isEmpty()) {
 
 					
 					predicados.add(
 							criteriaBuilder.like(
 									root.get("nombre"), 
-									"%"+filtro.getDesc_materia()+"%"));
+									"%"+filtro.getDescMateria()+"%"));
 				}
 				
-				if (filtro.getFk_ciclo() != null&&!filtro.getFk_ciclo().getTxt_desc_ciclo().isEmpty()) {
+				if (filtro.getIdCiclo() != null&&!filtro.getIdCiclo().getDescCiclo().isEmpty()) {
 				
 							
 							predicados.add(
 									criteriaBuilder.equal(
 											root.get("fk_ciclo"), 
-										filtro.getFk_ciclo()));
+										filtro.getIdCiclo()));
 					}
 				
 				if (!predicados.isEmpty()) {

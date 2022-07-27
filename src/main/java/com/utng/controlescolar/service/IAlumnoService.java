@@ -13,15 +13,15 @@ public interface IAlumnoService {
 	
 	Response<Alumno> guardarAlumno(AlumnoRequest alumno);
 	
-	Response<Integer> elimianarAlumno(Integer pk_alumno);
+	Response<Integer> elimianarAlumno(Integer idAlumno);
 	
-	Response<Object[]> mostrarMateriasAlumnoId(Integer pk_alumno);
+	Response<Object[]> mostrarMateriasAlumnoId(Integer idAlumno);
 
 	Response<Object[]> detallesAlumno();
 
 	Response<Alumno> actualizarAlumno(AlumnoRequest alumno);
 	
-	Response<Alumno> buscarAlumnoId(Integer pk_alumno);
+	Response<Alumno> buscarAlumnoId(Integer idAlumno);
 
 }
 

@@ -29,39 +29,39 @@ public class Alumno implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "PK_ALUMNO")
-	private Integer pk_alumno;
+	private Integer idAlumno;
 	
 	@Column(name = "TXT_EXPEDIENTE")
-	private String txt_expediente;
+	private String expediente;
 	
 	@Column(name = "TXT_NOMBRE")
-	private String txt_nombre;
+	private String nombre;
 	
 	@Column(name = "TXT_APE_PATERNO")
-	private String txt_ape_paterno;
+	private String apePaterno;
 	
 	@Column(name = "TXT_APE_MATERNO")
-	private String txt_ape_materno;
+	private String apeMaterno;
 	
 	@Column(name = "TXT_CURP")
-	private String txt_curp;
+	private String curp;
 
 	@Column(name = "TXT_SEXO")
-	private String txt_sexo;
+	private String sexo;
 	
 	@Column(name = "TXT_CORREO")
-	private String txt_correo;
+	private String correo;
 	
 	//@Column(name = "PHO_FOTO")
 	//private Blob pho_foto;
 	
 	//@ManyToOne(fetch = FetchType.EAGER)
 	@Column(name = "FK_STATUS")
-	private Integer fk_status;
+	private Integer idStatus;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "FK_GRUPO")
-	private Grupo pk_grupo;
+	private Grupo idGrupo;
 	
 }
 

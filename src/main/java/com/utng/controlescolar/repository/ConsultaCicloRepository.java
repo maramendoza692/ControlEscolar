@@ -36,13 +36,13 @@ public class ConsultaCicloRepository implements IConsultaCicloRepository{
 		// Predicate es como un where, es decir, condicicón.
 		List<Predicate> predicados = new ArrayList<Predicate>();
 
-		if (filtro.getTxt_clave() != null && !filtro.getTxt_clave().isEmpty()) {
+		if (filtro.getClave() != null && !filtro.getClave().isEmpty()) {
 			// campo que vamos a validar y valor
-			predicados.add(cb.like(root.get("clave"), "%" + filtro.getTxt_clave() + "%"));
+			predicados.add(cb.like(root.get("clave"), "%" + filtro.getClave() + "%"));
 		}
 
-		if (filtro.getTxt_desc_ciclo() != null && !filtro.getTxt_desc_ciclo().isEmpty()) {
-			predicados.add(cb.like(root.get("nombre"), "%" + filtro.getTxt_desc_ciclo() + "%"));
+		if (filtro.getDescCiclo() != null && !filtro.getDescCiclo().isEmpty()) {
+			predicados.add(cb.like(root.get("nombre"), "%" + filtro.getDescCiclo() + "%"));
 			// cq.select(root).where(predicados.toArray(new Predicate[predicados.size()]));
 		}
 		if (filtro.getYear() != null && !filtro.getYear().isEmpty()) {

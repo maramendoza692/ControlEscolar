@@ -7,11 +7,11 @@ import lombok.Setter;
 @Setter
 public class MateriaFiltroRequest {
 
-	private String txt_clave;
+	private String clave;
 	
-	private String desc_materia;
+	private String descMateria;
 	
 	private String cicloNombre;
 	
-	private Ciclo fk_ciclo;
+	private Ciclo idCiclo;
 }

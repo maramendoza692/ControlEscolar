@@ -39,17 +39,17 @@ public class Ciclo implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "PK_CICLO")
-	private Integer pk_ciclo;
+	private Integer idCiclo;
 	
 	@Column(name= "TXT_CLAVE")
-	private String txt_clave;
+	private String clave;
 	
 	@Column(name= "TXT_DESC_CICLO")
-	private String txt_desc_ciclo;
+	private String descCiclo;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "FK_STATUS")
-	private Status fk_status;
+	private Status status;
 	
 	@Column(name= "DAT_FECHA_INICIO")
 	private Date dat_fecha_inicio;

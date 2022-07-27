@@ -11,11 +11,11 @@ import com.utng.controlescolar.model.Ciclo;
 
 public interface CicloRepository extends JpaRepository<Ciclo, Integer>{
 
-	@Query("Select a from Ciclo a where a.txt_desc_ciclo = ?1 and a.txt_clave = ?2")
-	Optional<Ciclo> consultarPorNombre(String txt_desc_ciclo, String txt_clave);
+	@Query("Select a from Ciclo a where a.descCiclo = ?1 and a.clave = ?2")
+	Optional<Ciclo> consultarPorNombre(String descCiclo, String clave);
 	
-	@Query("select a from Ciclo a where a.txt_desc_ciclo = ?1")
-	Optional<Ciclo> consultarPorNombre2(@Param("txt_desc_ciclo") String txt_desc_ciclo);
+	@Query("select a from Ciclo a where a.descCiclo = ?1")
+	Optional<Ciclo> consultarPorNombre2(@Param("descCiclo") String descCiclo);
 
 	
 

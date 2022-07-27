@@ -44,7 +44,7 @@ public class GrupoService implements IGrupoService{
 	public Response<Grupo> guardarGrupo(GrupoRequest grupo) {
 		Response<Grupo> response = new Response<Grupo>();
 		
-		Optional <Ciclo> optionalCiclo = cicloRepository.findById(grupo.getFk_ciclo());
+		Optional <Ciclo> optionalCiclo = cicloRepository.findById(grupo.getIdCiclo());
 		Ciclo ciclo = null;
 		Grupo grupo1 = null;
 		Grupo grupo2 = null;
@@ -52,9 +52,9 @@ public class GrupoService implements IGrupoService{
 		if (optionalCiclo.isPresent()) {
 			ciclo = optionalCiclo.get();
 			grupo1 = new Grupo();
-			grupo1.setTxt_desc_grupo(grupo.getTxt_desc_grupo());
-			grupo1.setFk_ciclo(ciclo);
-			grupo1.setFk_status(grupo.getFk_status());
+			grupo1.setDescGrupo(grupo.getDescGrupo());
+			grupo1.setIdCiclo(ciclo);
+			grupo1.setStatus(grupo.getStatus());
 			grupo2 = grupoRepository.save(grupo1);
 			response.setStatus("OK");
 			response.setMessage("Guardado correctamente");
@@ -122,7 +122,7 @@ public class GrupoService implements IGrupoService{
 	public Response<Grupo> actualizarGrupo(GrupoRequest grupo) {
 		Response<Grupo> response = new Response<Grupo>();
 		
-		Optional <Ciclo> optionalCiclo = cicloRepository.findById(grupo.getFk_ciclo());
+		Optional <Ciclo> optionalCiclo = cicloRepository.findById(grupo.getIdCiclo());
 		Ciclo ciclo = null;
 		Grupo grupo1 = null;
 		Grupo grupo2 = null;
@@ -130,10 +130,10 @@ public class GrupoService implements IGrupoService{
 		if (optionalCiclo.isPresent()) {
 			ciclo = optionalCiclo.get();
 			grupo1 = new Grupo();
-			grupo1.setPk_grupo(grupo.getPk_grupo());
-			grupo1.setTxt_desc_grupo(grupo.getTxt_desc_grupo());
-			grupo1.setFk_ciclo(ciclo);
-			grupo1.setFk_status(grupo.getFk_status());
+			grupo1.setIdGrupo(grupo.getIdGrupo());
+			grupo1.setDescGrupo(grupo.getDescGrupo());
+			grupo1.setIdCiclo(ciclo);
+			grupo1.setStatus(grupo.getStatus());
 			grupo2 = grupoRepository.save(grupo1);
 			response.setStatus("OK");
 			response.setMessage("Actualizado correctamente");

@@ -58,10 +58,10 @@ public class MateriaService implements IMateriaService{
 		if (optionalCiclo.isPresent()) {
 			ciclo = optionalCiclo.get();
 			materia1 = new Materia();
-			materia1.setTxt_clave(materia.getTxt_clave());
-			materia1.setCiclo(ciclo);
-			materia1.setFk_status(materia.getFk_status());
-			materia1.setDes_materia(materia.getDes_materia());
+			materia1.setClave(materia.getTxt_clave());
+			materia1.setIdCiclo(ciclo);
+			materia1.setStatus(materia.getFk_status());
+			materia1.setDescMateria(materia.getDes_materia());
 			
 			materia2 = materiaRepository.save(materia1);//Meter en el objeto materia2, ya con el Id pq va alrepository y guarda materia1, 
 			
@@ -120,11 +120,11 @@ public class MateriaService implements IMateriaService{
 		if (optionalCiclo.isPresent()) {
 			ciclo = optionalCiclo.get();
 			materia1 = new Materia();
-			materia1.setPk_materia(materia.getPk_materia());
-			materia1.setTxt_clave(materia.getTxt_clave());
-			materia1.setCiclo(ciclo);
-			materia1.setFk_status(materia.getFk_status());
-			materia1.setDes_materia(materia.getDes_materia());
+			materia1.setIdMateria(materia.getPk_materia());
+			materia1.setClave(materia.getTxt_clave());
+			materia1.setIdCiclo(ciclo);
+			materia1.setStatus(materia.getFk_status());
+			materia1.setDescMateria(materia.getDes_materia());
 			materia2 = materiaRepository.save(materia1);
 			response.setStatus("OK");
 			response.setMessage("Actualizado correctamente");
@@ -185,7 +185,7 @@ public class MateriaService implements IMateriaService{
 		
 		if (optional.isPresent()) {
 			ciclo = optional.get();
-			materia.setFk_ciclo(ciclo);
+			materia.setIdCiclo(ciclo);
 		}
 		
 		Response<Materia> response= new Response<Materia>();

@@ -52,12 +52,12 @@ public class AlumnoService  implements IAlumnoService{
 	@Override
 	public Response<Alumno> buscarAlumno(AlumnoFiltroRequest alumno) {
 		
-		Optional<Grupo> optional = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
+		Optional<Grupo> optional = grupoRepository.consultarPorNombre2(alumno.getDescGrupo());
 		Grupo grupo = null;
 		
 		if (optional.isPresent()) {
 			grupo = optional.get();
-			alumno.setPk_grupo(grupo);
+			alumno.setIdGrupo(grupo);
 		}
 		
 		Response<Alumno> response = new Response<Alumno>();
@@ -81,7 +81,7 @@ public class AlumnoService  implements IAlumnoService{
 	public Response<Alumno> guardarAlumno(AlumnoRequest alumno) {
 		Response<Alumno> response = new Response<Alumno>();
 		
-		Optional <Grupo> optionalGrupo = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
+		Optional <Grupo> optionalGrupo = grupoRepository.consultarPorNombre2(alumno.getDescGrupo());
 		Grupo grupo = null;
 		Alumno alumno1 = null;
 		Alumno alumno2 = null;
@@ -89,15 +89,15 @@ public class AlumnoService  implements IAlumnoService{
 		if (optionalGrupo.isPresent()) {
 			grupo = optionalGrupo.get();
 			alumno1 = new Alumno();
-			alumno1.setTxt_expediente(alumno.getTxt_expediente());
-			alumno1.setPk_grupo(grupo);
-			alumno1.setTxt_nombre(alumno.getTxt_nombre());
-			alumno1.setTxt_ape_paterno(alumno.getTxt_ape_paterno());
-			alumno1.setTxt_ape_materno(alumno.getTxt_ape_materno());
-			alumno1.setTxt_sexo(alumno.getTxt_sexo());
-			alumno1.setFk_status(alumno.getFk_status());
-			alumno1.setTxt_correo(alumno.getTxt_correo());
-			alumno1.setTxt_curp(alumno.getTxt_curp());
+			alumno1.setExpediente(alumno.getExpediente());
+			alumno1.setIdGrupo(grupo);
+			alumno1.setNombre(alumno.getNombre());
+			alumno1.setApePaterno(alumno.getApePaterno());
+			alumno1.setApeMaterno(alumno.getApeMaterno());
+			alumno1.setSexo(alumno.getSexo());
+			alumno1.setIdStatus(alumno.getIdStatus());
+			alumno1.setCorreo(alumno.getCorreo());
+			alumno1.setCurp(alumno.getCurp());
 			
 			
 			alumno2 = alumnoRepository.save(alumno1);//Meter en el objeto materia2, ya con el Id pq va alrepository y guarda materia1, 
@@ -116,13 +116,13 @@ public class AlumnoService  implements IAlumnoService{
 
 
 	@Override
-	public Response<Integer> elimianarAlumno(Integer pk_alumno) {
+	public Response<Integer> elimianarAlumno(Integer idAlumno) {
 		Response<Integer> response = new Response<Integer>();
-		alumnoRepository.deleteById(pk_alumno);
+		alumnoRepository.deleteById(idAlumno);
 		
 		response.setMessage("Eliminado correctamente");
 		response.setStatus("OK");
-		response.setData(pk_alumno);
+		response.setData(idAlumno);
 		
 		return response;
 	}
@@ -132,7 +132,7 @@ public class AlumnoService  implements IAlumnoService{
 	public Response<Alumno> actualizarAlumno(AlumnoRequest alumno) {
 Response<Alumno> response = new Response<Alumno>();
 		
-		Optional <Grupo> optionalGrupo = grupoRepository.consultarPorNombre2(alumno.getTxt_desc_grupo());
+		Optional <Grupo> optionalGrupo = grupoRepository.consultarPorNombre2(alumno.getDescGrupo());
 		Grupo grupo = null;
 		Alumno alumno1 = null;
 		Alumno alumno2 = null;
@@ -140,16 +140,16 @@ Response<Alumno> response = new Response<Alumno>();
 		if (optionalGrupo.isPresent()) {
 			grupo = optionalGrupo.get();
 			alumno1 = new Alumno();
-			alumno1.setTxt_expediente(alumno.getTxt_expediente());
-			alumno1.setPk_alumno(alumno.getPk_alumno());
-			alumno1.setPk_grupo(grupo);
-			alumno1.setTxt_nombre(alumno.getTxt_nombre());
-			alumno1.setTxt_ape_paterno(alumno.getTxt_ape_paterno());
-			alumno1.setTxt_ape_materno(alumno.getTxt_ape_materno());
-			alumno1.setTxt_sexo(alumno.getTxt_sexo());
-			alumno1.setFk_status(alumno.getFk_status());
-			alumno1.setTxt_correo(alumno.getTxt_correo());
-			alumno1.setTxt_curp(alumno.getTxt_curp());
+			alumno1.setExpediente(alumno.getExpediente());
+			alumno1.setIdAlumno(alumno.getIdAlumno());
+			alumno1.setIdGrupo(grupo);
+			alumno1.setNombre(alumno.getNombre());
+			alumno1.setApePaterno(alumno.getApePaterno());
+			alumno1.setApeMaterno(alumno.getApeMaterno());
+			alumno1.setSexo(alumno.getSexo());
+			alumno1.setIdStatus(alumno.getIdStatus());
+			alumno1.setCorreo(alumno.getCorreo());
+			alumno1.setCurp(alumno.getCurp());
 			
 			
 			alumno2 = alumnoRepository.save(alumno1);//Meter en el objeto materia2, ya con el Id pq va alrepository y guarda materia1, 
@@ -167,12 +167,12 @@ Response<Alumno> response = new Response<Alumno>();
 	}
 	
 	@Override
-	public Response<Alumno> buscarAlumnoId(Integer pk_alumno) {
+	public Response<Alumno> buscarAlumnoId(Integer idAlumno) {
 		Response<Alumno> response = new Response<Alumno>();
 
 		Alumno alumno = null;
 
-		Optional<Alumno> optional = alumnoRepository.findById(pk_alumno); // optional es una capsula para saber si regreso o
+		Optional<Alumno> optional = alumnoRepository.findById(idAlumno); // optional es una capsula para saber si regreso o
 																		// no un registro
 		if (optional.isPresent()) {
 
@@ -193,10 +193,10 @@ Response<Alumno> response = new Response<Alumno>();
 	}
 
 	@Override
-	public Response<Object[]> mostrarMateriasAlumnoId(Integer pk_alumno) {
+	public Response<Object[]> mostrarMateriasAlumnoId(Integer idAlumno) {
 		Response<Object[]> response = new Response<Object[]>();
 
-		List<Object[]> lista = alumnoRepository.mostrarMateriasAlumnoID(pk_alumno);
+		List<Object[]> lista = alumnoRepository.mostrarMateriasAlumnoID(idAlumno);
 		
 		if(lista.isEmpty()) {
 			response.setMessage("No hay resultados");

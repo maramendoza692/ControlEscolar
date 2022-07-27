@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 public class CicloFiltroRequest {
 	
-	private String txt_clave;
+	private String clave;
 	
-	private String txt_desc_ciclo;
+	private String descCiclo;
 	
 	private String year;
 	

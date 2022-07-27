@@ -40,6 +40,6 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 				+ "ON rtpm.FK_PROFESOR = mtp.PK_PROFESOR \n"
 				+ "INNER JOIN REL_TBL_PROFESOR_ALUMNO AS rtpa \n"
 				+ "ON mtp.PK_PROFESOR = rtpa.FK_PROFESOR AND mta.PK_ALUMNO = rtpa.FK_ALUMNO WHERE mta.PK_ALUMNO = ?1" , nativeQuery = true) 
-			List<Object[]>mostrarMateriasAlumnoID(Integer pk_alumno);
+			List<Object[]>mostrarMateriasAlumnoID(Integer idAlumno);
 	
 }

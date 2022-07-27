@@ -7,11 +7,11 @@ import lombok.Setter;
 @Setter
 public class GrupoRequest {
 	
-	private Integer pk_grupo;
+	private Integer idGrupo;
 	
-	private String txt_desc_grupo;
+	private String descGrupo;
 	
-	private Status fk_status;
+	private Status status;
 	
-	private Integer fk_ciclo;
+	private Integer idCiclo;
 }

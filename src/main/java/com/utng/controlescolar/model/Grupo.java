@@ -35,17 +35,17 @@ public class Grupo implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "PK_GRUPO")
-	private Integer pk_grupo;
+	private Integer idGrupo;
 	
 	@Column(name= "TXT_DESC_GRUPO")
-	private String txt_desc_grupo;
+	private String descGrupo;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "FK_STATUS")
-	private Status fk_status;
+	private Status status;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "FK_CICLO")
-	private Ciclo fk_ciclo;
+	private Ciclo idCiclo;
 
 }

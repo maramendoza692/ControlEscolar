@@ -7,30 +7,30 @@ import lombok.Setter;
 @Setter
 public class AlumnoRequest {
 
-	private Integer pk_alumno;
+	private Integer idAlumno;
 
-	private String txt_expediente;
+	private String expediente;
 
-	private String txt_nombre;
+	private String nombre;
 	
-	private String txt_ape_paterno;
+	private String apePaterno;
 	
-	private String txt_ape_materno;
+	private String apeMaterno;
 
-	private String txt_curp;
+	private String curp;
 
-	private String txt_sexo;
+	private String sexo;
 
-	private String txt_correo;
+	private String correo;
 	
 	//private Integer grupoClave;
 	
-	private Integer fk_status;
-	
-	private String txt_status;
+	private Integer idStatus;
+
+	private String status;
 
 	//private Grupo pk_grupo;
 	
-	private String txt_desc_grupo;
+	private String descGrupo;
 	
 }

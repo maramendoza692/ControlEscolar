@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "CAT_TBL_CICLO_PROMEDIO")
+@Table(name = "AUX_TBL_CALIFICACIONES")
 public class Calificaciones implements Serializable {
 
 	/**
@@ -28,20 +28,18 @@ public class Calificaciones implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "PK_PROMEDIO")
-	private Integer pk_promedio;
+	@Column(name= "PK_CALIFICACION")
+	private Integer pk_calificacion;
 	
-	@Column(name= "NUM_CAL_1")
-	private Integer num_cal_1;
+	@Column(name= "NUM_CAL_UNIDAD_UNO")
+	private Integer num_cal_unidad_uno;
 	
-	@Column(name= "NUM_CAL_2")
-	private Integer num_cal_2;
+	@Column(name= "NUM_CAL_2_UNIDAD_DOS")
+	private Integer num_cal_unidad_dos;
 	
-	@Column(name= "NUM_CAL_3")
-	private Integer num_cal_3;
-	
-	@Column(name= "NUM_PROMEDIO")
-	private Integer num_promedio;
+	@Column(name= "NUM_CAL_UNIDAD_TRES")
+	private Integer num_cal_unidad_tres;
+
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "FK_ALUMNO")

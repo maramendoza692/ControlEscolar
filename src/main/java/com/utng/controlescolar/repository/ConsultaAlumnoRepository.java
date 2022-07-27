@@ -36,40 +36,40 @@ public class ConsultaAlumnoRepository implements IConsultaAlumnoRepository{
 		//Predicate es como un where, es decir, condicicón.
 		List<Predicate> predicados = new ArrayList<Predicate>();
 		
-		if(filtro.getTxt_expediente() != null && !filtro.getTxt_expediente().isEmpty()) {
+		if(filtro.getExpediente() != null && !filtro.getExpediente().isEmpty()) {
 									//campo que vamos a validar y valor
-			predicados.add(cb.like(root.get("txt_expediente"), "%"+ filtro.getTxt_expediente() + "%"));
+			predicados.add(cb.like(root.get("expediente"), "%"+ filtro.getExpediente() + "%"));
 		}
 		
-		if(filtro.getTxt_nombre() != null && !filtro.getTxt_nombre().isEmpty()) {
-			predicados.add(cb.like(root.get("txt_nombre"), "%" + filtro.getTxt_nombre() + "%"));
+		if(filtro.getNombre() != null && !filtro.getNombre().isEmpty()) {
+			predicados.add(cb.like(root.get("nombre"), "%" + filtro.getNombre() + "%"));
 		}
 		
-		if(filtro.getTxt_ape_paterno() != null && !filtro.getTxt_ape_paterno().isEmpty()) {
-			predicados.add(cb.like(root.get("txt_ape_paterno"), "%" + filtro.getTxt_ape_paterno() + "%"));
+		if(filtro.getApeMaterno() != null && !filtro.getApeMaterno().isEmpty()) {
+			predicados.add(cb.like(root.get("apeMaterno"), "%" + filtro.getApeMaterno() + "%"));
 		}
-		if(filtro.getTxt_ape_materno() != null && !filtro.getTxt_ape_materno().isEmpty()) {
-			predicados.add(cb.like(root.get("txt_ape_materno"), "%" + filtro.getTxt_ape_materno() + "%"));
-		}
-		
-		if(filtro.getTxt_correo() != null && !filtro.getTxt_correo().isEmpty()) {
-			predicados.add(cb.like(root.get("txt_correo"), "%" + filtro.getTxt_correo() + "%"));
+		if(filtro.getApePaterno() != null && !filtro.getApePaterno().isEmpty()) {
+			predicados.add(cb.like(root.get("apePaterno"), "%" + filtro.getApePaterno() + "%"));
 		}
 		
-		if(filtro.getTxt_curp() != null && !filtro.getTxt_curp().isEmpty()) {
-			predicados.add(cb.like(root.get("txt_curp"), "%" + filtro.getTxt_curp() + "%"));
+		if(filtro.getCorreo() != null && !filtro.getCorreo().isEmpty()) {
+			predicados.add(cb.like(root.get("correo"), "%" + filtro.getCorreo() + "%"));
 		}
 		
-		if (filtro.getPk_grupo() != null ) {
+		if(filtro.getCurp() != null && !filtro.getCurp().isEmpty()) {
+			predicados.add(cb.like(root.get("curp"), "%" + filtro.getCurp() + "%"));
+		}
+		
+		if (filtro.getIdGrupo() != null ) {
 			
-			predicados.add(cb.equal(root.get("pk_grupo"), filtro.getPk_grupo()));
+			predicados.add(cb.equal(root.get("idGrupo"), filtro.getIdGrupo()));
 		}
 		if (!predicados.isEmpty()) {
 			Predicate[] pr= new Predicate[predicados.size()];
 			predicados.toArray(pr);
 			cq.where(pr);
 		}
-		cq.orderBy(cb.asc(root.get("pk_alumno")));
+		cq.orderBy(cb.asc(root.get("idAlumno")));
 		
 		CriteriaQuery<Alumno> select= cq.select(root);
 		

@@ -16,5 +16,5 @@ public interface IGrupoService {
 	
 	Response<Grupo> actualizarGrupo(GrupoRequest grupo);
 	
-	Response<Grupo> buscarPorNombre(String txt_desc_grupo);
+	Response<Grupo> buscarPorNombre(String descGrupo);
 }

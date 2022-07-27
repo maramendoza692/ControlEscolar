@@ -29,21 +29,21 @@ public class Materia implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name= "PK_MATERIA")
-	private Integer pk_materia;
+	private Integer idMateria;
 	
 	@Column(name= "TXT_CLAVE")
-	private String txt_clave;
+	private String clave;
 	
 	@Column(name= "DESC_MATERIA")
-	private String des_materia;
+	private String descMateria;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "FK_STATUS")
-	private Status fk_status;
+	private Status status;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "ID_CICLO")
-	private Ciclo ciclo;
+	private Ciclo IdCiclo;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name= "FK_PROMEDIO")

@@ -10,11 +10,11 @@ import com.utng.controlescolar.model.Materia;
 
 public interface MateriaRepository extends JpaRepository<Materia, Integer>{
 	
-	@Query("Select a from Materia a where a.des_materia = ?1 ")
+	@Query("Select a from Materia a where a.descMateria = ?1 ")
 	Optional<Materia> consultarPorNombre(String nombre);
 	
-	@Query("Select a from Materia a where a.des_materia = :des_materia and a.txt_clave = :txt_clave")
-	Optional<Materia> consultarPorNombre2(@Param("des_materia") String des_materia, @Param("txt_clave") String txt_clave);
+	@Query("Select a from Materia a where a.descMateria = :descMateria and a.clave = :clave")
+	Optional<Materia> consultarPorNombre2(@Param("descMateria") String descMateria, @Param("clave") String clave);
 
 }
 
