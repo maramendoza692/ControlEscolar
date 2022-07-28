@@ -42,13 +42,13 @@ public class Profesor implements Serializable {
 	private String txt_ape_paterno;
 	
 	@Column(name= "TXT_APE_MATERNO")
-	private Integer txt_ape_materno;
+	private String txt_ape_materno;
 	
 	@Column(name= "TXT_CORREO")
 	private String txt_correo;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name= "FK_GR_MT")
-	private GrupoMateria fk_gr_mt;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name= "FK_GR_MT")
+//	private GrupoMateria fk_gr_mt;
 
 }

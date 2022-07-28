@@ -34,9 +34,9 @@ public class GrupoMateria implements Serializable {
 	
 	
 	@Column(name= "FK_GRUPO")
-	private Grupo fk_grupo;
+	private Integer fk_grupo;
 	
 
 	@Column(name= "FK_MATERIA")
-	private Materia fk_materia;
+	private Integer fk_materia;
 }
