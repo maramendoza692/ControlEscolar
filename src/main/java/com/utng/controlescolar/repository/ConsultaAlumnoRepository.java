@@ -44,13 +44,14 @@ public class ConsultaAlumnoRepository implements IConsultaAlumnoRepository{
 		if(filtro.getNombre() != null && !filtro.getNombre().isEmpty()) {
 			predicados.add(cb.like(root.get("nombre"), "%" + filtro.getNombre() + "%"));
 		}
+		if(filtro.getApePaterno() != null && !filtro.getApePaterno().isEmpty()) {
+			predicados.add(cb.like(root.get("apePaterno"), "%" + filtro.getApePaterno() + "%"));
+		}
 		
 		if(filtro.getApeMaterno() != null && !filtro.getApeMaterno().isEmpty()) {
 			predicados.add(cb.like(root.get("apeMaterno"), "%" + filtro.getApeMaterno() + "%"));
 		}
-		if(filtro.getApePaterno() != null && !filtro.getApePaterno().isEmpty()) {
-			predicados.add(cb.like(root.get("apePaterno"), "%" + filtro.getApePaterno() + "%"));
-		}
+		
 		
 		if(filtro.getCorreo() != null && !filtro.getCorreo().isEmpty()) {
 			predicados.add(cb.like(root.get("correo"), "%" + filtro.getCorreo() + "%"));
